@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+body {
+  height: 100vh;
+  animation: slideshow 15s infinite;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes slideshow {
+  0% { background-image: url("images/his.jpg"); }
+  33% { background-image: url("images/her.jpg"); }
+  66% { background-image: url("images/us.jpg"); }
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background: rgba(255,255,255,0.85);
+  padding: 30px 40px;
+  border-radius: 20px;
+}
+
+h1 {
+  color: #e91e63;
+  margin-bottom: 25px;
+}
+
+.buttons {
+  position: relative;
+  height: 80px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+}
+
+#yesBtn {
+  background: #ff4081;
+  color: white;
+  left: 20%;
+}
+
+#noBtn {
+  background: #ccc;
+  color: #555;
+  left: 55%;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
