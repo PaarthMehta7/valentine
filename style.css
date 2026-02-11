@@ -1,0 +1,287 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ================= BODY ================= */
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: #f7c6d0;
+}
+
+/* ================= ENVELOPE SCREEN ================= */
+#envelope-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#ffd6e8, #ffb3c6);
+  z-index: 50;
+}
+
+/* ================= ENVELOPE ================= */
+.envelope {
+  width: 500px;
+  height: 360px;
+  background: #ffffff;
+  border-radius: 22px;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* Bottom fold */
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: white;
+  clip-path: polygon(0 100%, 50% 65%, 100% 100%);
+  z-index: 1;
+}
+
+/* ================= TOP FLAP ================= */
+.flap {
+  position: absolute;
+  inset: 0;
+  background: #ffe3ee;
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  transform-origin: top;
+  transition: transform 1s ease;
+  z-index: 4;
+}
+
+/* ================= HEART SEAL ================= */
+
+/* Wrapper for pulse */
+.seal {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 6;
+  animation: heartPulse 2.2s infinite ease-in-out;
+}
+
+/* Actual heart shape */
+.seal-inner {
+  position: relative;
+  width: 110px;
+  height: 100px;
+  background: #ff4f81;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 18px rgba(255, 79, 129, 0.6);
+}
+
+/* Heart curves */
+.seal-inner::before,
+.seal-inner::after {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 100px;
+  background: #ff4f81;
+  border-radius: 50%;
+}
+
+.seal-inner::before {
+  top: -55px;
+  left: 0;
+}
+
+.seal-inner::after {
+  left: 55px;
+  top: 0;
+}
+
+/* PERFECTLY CENTERED TEXT */
+.seal span {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  pointer-events: none;
+  width: 100%;
+}
+
+/* Pulse animation ONLY scales wrapper */
+@keyframes heartPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* ================= PANDA ================= */
+.panda {
+  position: absolute;
+  top: 64%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+
+.panda img {
+  width: 135px;
+  animation: pandaWave 2s infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+@keyframes pandaWave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(6deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-6deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ================= ENVELOPE OPEN ================= */
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open {
+  animation: envelopeFade 1.2s ease forwards;
+}
+
+@keyframes envelopeFade {
+  to {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+/* ================= BACKGROUNDS ================= */
+.background-blur {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(25px) brightness(0.75);
+  transform: scale(1.1);
+  animation: slideshow 21s infinite;
+  z-index: -2;
+}
+
+.background-main {
+  position: fixed;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  animation: slideshow 21s infinite;
+  z-index: -1;
+}
+
+@keyframes slideshow {
+  0%, 33% {
+    background-image: url("images/his.jpg");
+    opacity: 1;
+  }
+  36% { opacity: 0; }
+
+  39%, 66% {
+    background-image: url("images/her.jpg");
+    opacity: 1;
+  }
+  69% { opacity: 0; }
+
+  72%, 100% {
+    background-image: url("images/us.jpg");
+    opacity: 1;
+  }
+}
+
+/* ================= OVERLAY ================= */
+.overlay {
+  position: fixed;
+  top: 25px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  z-index: 10;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.8);
+}
+
+.overlay h1 {
+  font-size: 2.4rem;
+  margin-bottom: 18px;
+}
+
+/* ================= BUTTONS ================= */
+.buttons {
+  margin-top: 10px;
+}
+
+button {
+  font-size: 1.3rem;
+  padding: 14px 32px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.25s ease;
+}
+
+#yes {
+  background: #ff4f81;
+  color: white;
+}
+
+#no {
+  background: #555;
+  color: white;
+}
+
+/* YES FINAL */
+#yes.final {
+  font-size: 2.6rem;
+  padding: 24px 60px;
+  transform: scale(1.9);
+}
+
+.hide-question {
+  display: none;
+}
+
+/* ================= HEARTS ================= */
+.heart {
+  position: fixed;
+  font-size: 22px;
+  animation: float 4s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+}
+
+/* ================= UTIL ================= */
+.hidden {
+  display: none;
+}
+
