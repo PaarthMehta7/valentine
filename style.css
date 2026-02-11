@@ -57,7 +57,6 @@ body {
 }
 
 /* ================= HEART SEAL ================= */
-/* ================= HEART SEAL ================= */
 
 /* Wrapper for pulse */
 .seal {
@@ -104,6 +103,8 @@ body {
 /* PERFECTLY CENTERED TEXT */
 .seal span {
   position: absolute;
+   width: 90px;
+  white-space: normal;
   top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -285,4 +286,5 @@ button {
 .hidden {
   display: none;
 }
+
 
