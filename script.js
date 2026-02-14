@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function () {
+
 const openBtn = document.getElementById("openBtn");
 const envelopeScreen = document.getElementById("envelope-screen");
 
@@ -51,6 +53,7 @@ openBtn.addEventListener("click", () => {
   setTimeout(() => {
     envelopeScreen.style.display = "none";
     letterScreen.classList.remove("hidden");
+    letterScreen.style.display = "flex"; // force show
     typeWriter();
     startPetals();
   }, 1200);
@@ -126,3 +129,6 @@ function createHeart() {
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 4000);
 }
+
+});
+
